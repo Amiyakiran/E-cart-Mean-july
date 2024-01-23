@@ -1,37 +1,41 @@
-<nav class="navbar navbar-expand-lg bg-warning">
-    <div class="container-fluid ">
-      <a class="navbar-brand" >Daily cart</a>
+<nav class="navbar navbar-expand-lg bg-danger">
+    <div class="container-fluid">
+      <a routerLink="" class="navbar-brand text-light" ><i class="fa-brands fa-slack fa-spin fa-3x me-2"></i><span class="fs-3"><b>GloboMart</b></span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active d-flex">
-              
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  
-            </a>
-          </li>
-          <li>
-            <a class="nav-link active" routerLink="user/wishlist">
-                <button class="btn btn-outline-success">wishlist</button>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link active"routerLink="user/cart">
-                <button class="btn btn-outline-dark">cart</button>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link active"routerLink="user/login">
-                <button class="btn btn-outline-dark">login</button>
-            </a>
-          </li>
-         
-        </ul>
-        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <div class="d-flex justify-content-between w-100">
+           <div>
+  
+           </div>
+            <div class="w-50">
+              <a class="nav-link active d-flex mt-2">
+                <input class="form-control me-2 " type="search" placeholder="Search">
+                <button class="btn btn-outline-light" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </a>
+            </div>
+     
+          <ul class="navbar-nav  mb-2 mb-lg-0">
+            <li>
+              <a class="nav-link active" routerLink="user/wishlist">
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-heart fa-beat me-2"></i>wishlist<span class="badge bg-secondary ms-2">6</span></button>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link active"routerLink="user/cart">
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-cart-shopping me-2"></i>cart<span class="badge bg-secondary ms-2">5</span></button>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link active"routerLink="user/login">
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-user me-2"></i>login</button>
+              </a>
+            </li>
+           
+          </ul>
+          
+         </div>
       </div>
     </div>
   </nav>
