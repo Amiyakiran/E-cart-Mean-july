@@ -13,4 +13,12 @@ export class ApiService {
   getAllproductapi(){
     return this.http.get(`${this.server_Url}/products/all`)
   }
+
+  registerApi(user:any){
+    return this.http.post(`${this.server_Url}/register`,user)
+  }
+
+  loginApi(user:any){
+    return this.http.post(`${this.server_Url}/login`,user)
+  }
 }

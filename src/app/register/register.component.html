@@ -4,20 +4,25 @@
      <div class="col-md-6 shadow d-flex justify-content-center align-items-center flex-column p-5">
          <div class="p-3 d-flex justify-content-center align-items-center" style="height: 70px; width: 70px; border: 3px solid red; border-radius: 50%;"><i class="fa-solid fa-user fa-2x text-danger"></i></div>
          <h2 class="text-center text-danger d-flex">Join Family</h2>
-       <form class=" border rounded p-3 w-100 shadow  mt-4">
+       <form (ngSubmit) ="register()" class=" border rounded p-3 w-100 shadow  mt-4" [formGroup]="registerForm">
         
         <div class="mb-4 mt-3">
-            <input type="text" class="form-control" placeholder="Enter Username">
+            <input type="text" class="form-control" placeholder="Enter Username" formControlName="username" name="uname">
+            <span *ngIf="this.registerForm.get('username')?.errors&& this.registerForm.get('username')?.touched" class="text-warning">Invalid Username</span>
            </div>
         <div class="mb-4 mt-3">
-         <input type="text" class="form-control" placeholder="Enter Email">
+         <input type="text" class="form-control" placeholder="Enter Email" formControlName="email" name="uemail">
+         <span *ngIf="this.registerForm.get('email')?.errors&& this.registerForm.get('email')?.touched" class="text-warning">Invalid email</span>
+          
         </div>
         <div class="mb-4">
-         <input type="text" class="form-control" placeholder="Enter Password">
+         <input type="text" class="form-control" placeholder="Enter Password" formControlName="password" name="upswd">
+         
+         <span *ngIf="this.registerForm.get('password')?.errors&& this.registerForm.get('password')?.touched" class="text-warning">Invalid password</span>
         </div>
        
         <div class="mb-3">
-         <button class="btn btn-danger w-100">Register</button>
+         <button type="submit" class="btn btn-danger w-100">Register</button>
         </div>
      </form>
      </div>

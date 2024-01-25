@@ -41,8 +41,8 @@
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-outline-danger "><i class="fa-solid fa-heart"></i></button>
-                            <button class="btn btn-outline-success "><i class="fa-solid fa-cart-shopping"></i></button>
+                            <button  (click)="addToWishlist(product)" class="btn btn-outline-danger "><i class="fa-solid fa-heart"></i></button>
+                            <button (click)="addToCart(product)" class="btn btn-outline-success "><i class="fa-solid fa-cart-shopping"></i></button>
                         </div>
                     </div>
                 </div>

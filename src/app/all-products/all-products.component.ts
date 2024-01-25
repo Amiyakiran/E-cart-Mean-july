@@ -24,4 +24,22 @@ export class AllProductsComponent implements OnInit{
    })
 
  }
+
+ addToWishlist(product:any){
+   if(localStorage.getItem("token")){
+    alert('proceed')
+   }
+   else{
+    alert('please login') 
+   }
+ }
+
+ addToCart(product:any){
+  if(localStorage.getItem("token")){
+    alert('proceed')
+   }
+   else{
+    alert('please login')
+   }
+ }
 }
