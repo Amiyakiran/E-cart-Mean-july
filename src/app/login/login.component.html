@@ -4,17 +4,21 @@
     <div class="col-md-6 shadow d-flex justify-content-center align-items-center flex-column p-5">
         <div class="p-3 d-flex justify-content-center align-items-center" style="height: 70px; width: 70px; border: 3px solid red; border-radius: 50%;"><i class="fa-solid fa-user fa-2x text-danger"></i></div>
         <h1 class="text-center text-danger d-flex">Welcome User</h1>
-      <form class=" border rounded p-3 w-100 shadow  mt-5">
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class=" border rounded p-3 w-100 shadow  mt-5">
        
-       <div class="mb-4 mt-3">
-        <input type="text" class="form-control" placeholder="Enter Email">
-       </div>
-       <div class="mb-4">
-        <input type="text" class="form-control" placeholder="Enter Password">
-       </div>
+        <div class="mb-4 mt-3">
+            <input type="text" class="form-control" placeholder="Enter Email" formControlName="email" name="uemail">
+            <span *ngIf="this.loginForm.get('email')?.errors&& this.loginForm.get('email')?.touched" class="text-warning">Invalid email</span>
+             
+           </div>
+           <div class="mb-4">
+            <input type="text" class="form-control" placeholder="Enter Password" formControlName="password" name="upswd">
+            
+            <span *ngIf="this.loginForm.get('password')?.errors&& this.loginForm.get('password')?.touched" class="text-warning">Invalid password</span>
+           </div>
       
        <div class="mb-3">
-        <button class="btn btn-danger w-100">Login</button>
+        <button type="submit" class="btn btn-danger w-100">Login</button>
        </div>
     </form>
     </div>
