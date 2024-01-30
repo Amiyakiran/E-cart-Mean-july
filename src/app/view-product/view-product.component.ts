@@ -35,10 +35,11 @@ getproductDetails(id:any){
 }
   addToWishlist(product:any){
     if(localStorage.getItem("token")){
-     this.api.addToWishlistApi(product.id).subscribe({
+     this.api.addToWishlistApi(product).subscribe({
       next:(res:any)=>{
         console.log(res);
         alert(`product added to the wishlist`)
+        this.api.getwishlistCount()
         
       },
       error:(err:any)=>{

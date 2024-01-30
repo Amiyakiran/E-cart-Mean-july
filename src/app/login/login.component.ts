@@ -31,6 +31,8 @@ export class LoginComponent {
           //save to local storage
           sessionStorage.setItem("username",res.existingUser.username)
           sessionStorage.setItem("token",res.token)
+          //change the value of behaviour subject
+          this.api.getwishlistCount()
           this.loginForm.reset()
           this.router.navigateByUrl('')
         },

@@ -26,8 +26,20 @@ export class AllProductsComponent implements OnInit{
  }
 
  addToWishlist(product:any){
-   if(localStorage.getItem("token")){
-    alert('proceed')
+   if(sessionStorage.getItem("token")){
+    this.api.addToWishlistApi(product).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        alert('product added successfully')
+        this.api.getwishlistCount()
+        
+      },
+      error:(err:any)=>{
+        console.log(err);
+        alert(err.error)
+        
+      }
+    })
    }
    else{
     alert('please login') 
@@ -35,7 +47,7 @@ export class AllProductsComponent implements OnInit{
  }
 
  addToCart(product:any){
-  if(localStorage.getItem("token")){
+  if(sessionStorage.getItem("token")){
     alert('proceed')
    }
    else{

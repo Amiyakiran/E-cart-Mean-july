@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,16 @@ export class ApiService {
 
   server_Url ='http://localhost:3000'
 
-  constructor(private http:HttpClient) { }
+  /* variable for behaviour subject */
+  wishlistCount = new BehaviorSubject(0)
+
+
+
+  constructor(private http:HttpClient) {
+    if(sessionStorage.getItem("token")){
+      this.getwishlistCount()
+    }
+   }
 
   getAllproductapi(){
     return this.http.get(`${this.server_Url}/products/all`)
@@ -34,7 +44,22 @@ export class ApiService {
     }
     return {headers}
   }
-  addToWishlistApi(id:any){
-   return this.http.get(`${this.server_Url}/wishlist/add/${id}`,this.appendTokenToHeader())
+  addToWishlistApi(product:any){
+   return this.http.post(`${this.server_Url}/wishlist/add`,product,this.appendTokenToHeader())
   }
+getWishListapi(){
+  return this.http.get(`${this.server_Url}/wishlist/get-products`,this.appendTokenToHeader())
+}
+  //behaviour subject
+  getwishlistCount(){
+ this.getWishListapi().subscribe((res:any)=>{
+  this.wishlistCount.next(res.length)
+ })
+  }
+
+
+  removefromwishlistApi(id:any){
+  return  this.http.delete(`${this.server_Url}/remove-wishlist/${id}`,this.appendTokenToHeader())
+  }
+
 }
