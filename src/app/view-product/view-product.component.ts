@@ -34,7 +34,7 @@ getproductDetails(id:any){
   })
 }
   addToWishlist(product:any){
-    if(localStorage.getItem("token")){
+    if(sessionStorage.getItem("token")){
      this.api.addToWishlistApi(product).subscribe({
       next:(res:any)=>{
         console.log(res);
@@ -54,8 +54,21 @@ getproductDetails(id:any){
   }
  
   addToCart(product:any){
-   if(localStorage.getItem("token")){
-     alert('proceed')
+   if(sessionStorage.getItem("token")){
+    Object.assign(product,{quantity:1})
+    this.api.addToCartApi(product).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        alert('product added successfully')
+        this.api.getCartCount()
+        
+      },
+      error:(err:any)=>{
+        console.log(err);
+        alert(err.error)
+        
+      }
+    })
     }
     else{
      alert('please login')

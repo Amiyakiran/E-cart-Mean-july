@@ -24,7 +24,7 @@
             </li>
             <li>
               <a class="nav-link active"routerLink="/user/cart">
-                  <button class="btn btn-outline-light"><i class="fa-solid fa-cart-shopping me-2"></i>cart<span class="badge bg-secondary ms-2">5</span></button>
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-cart-shopping me-2"></i>cart<span class="badge bg-secondary ms-2"> {{cartCount}} </span></button>
               </a>
             </li>
             <li *ngIf="!loginUsername">

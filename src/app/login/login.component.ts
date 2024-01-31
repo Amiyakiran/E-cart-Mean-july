@@ -33,6 +33,7 @@ export class LoginComponent {
           sessionStorage.setItem("token",res.token)
           //change the value of behaviour subject
           this.api.getwishlistCount()
+          this.api.getCartCount()
           this.loginForm.reset()
           this.router.navigateByUrl('')
         },

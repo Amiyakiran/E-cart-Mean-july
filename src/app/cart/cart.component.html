@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div style="margin-top: 60px;">
-    <div class="empty-wishlist d-flex justify-content-center align-items-center flex-column">
+    <div *ngIf="(allProduct.length==0)" class="empty-wishlist d-flex justify-content-center align-items-center flex-column">
         <img src="https://pennpowergroup.com/images/EmptyCart.png" alt="">
         <h1 class="fs-1 text-danger" style="font-family: 'Abril Fatface', serif;">Your Cart is empty</h1>
         <button class="btn text-success" style="text-decoration: underline;" routerLink="">Add Your Cart</button>
     </div>
-    <div class="container-fluid px-4 px-lg-5 mt-5">
+    <div  *ngIf="!(allProduct.length==0)" class="container-fluid px-4 px-lg-5 mt-5">
        <h1 class="text-danger text-center" style="font-family: 'Abril Fatface', serif;">Cart Summary</h1>
       <div class="row w-100">
         <div class="col-md-1"></div>
@@ -22,19 +22,19 @@
                 </tr>
                </thead>
                <tbody>
-                <tr>
-                    <td >1</td>
-                    <td >abc</td>
-                    <td ><img src="https://cdn.fcglcdn.com/brainbees/images/products/583x720/12700786a.webp" alt="" width="100px" height="100px"></td>
+                <tr *ngFor="let product of allProduct ; let i=index">
+                    <td >{{i+1}}</td>
+                    <td >{{product.title}}</td>
+                    <td ><img [src]="product.image" alt="" width="100px" height="100px"></td>
                     <td >
                         <div class="d-flex">
                             <button class="btn fw-bolder fs-3">-</button>
-                            <input type="num" class="form-control text-center" value="1" style="max-width: 3rem;" readonly>
+                            <input type="num" class="form-control text-center" [value]="product.quantity" style="max-width: 3rem;" readonly>
                             <button class="btn fw-bolder fs-4">+</button>
                         </div>
                     </td>
                     <td >
-                        ₹200/-
+                        ${{product.grandTotal}}
                     </td>
                     <td ><button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
                 </tr>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-3 d-flex justify-content-center align-items-center">
             <div class="border shadow rounded p-4">
-              <h3>Grand Total:₹ 200</h3>
+              <h3>Grand Total:<span class="text-primary"> $ {{cartTotal}}</span> </h3>
               <button class="btn btn-success mt-3" routerLink="/user/checkout">CheckOut</button>
             </div>
         </div>

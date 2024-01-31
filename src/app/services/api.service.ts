@@ -11,12 +11,13 @@ export class ApiService {
 
   /* variable for behaviour subject */
   wishlistCount = new BehaviorSubject(0)
-
+  cartCount = new BehaviorSubject(0)
 
 
   constructor(private http:HttpClient) {
     if(sessionStorage.getItem("token")){
       this.getwishlistCount()
+      this.getCartCount()
     }
    }
 
@@ -60,6 +61,21 @@ getWishListapi(){
 
   removefromwishlistApi(id:any){
   return  this.http.delete(`${this.server_Url}/remove-wishlist/${id}`,this.appendTokenToHeader())
+  }
+
+  addToCartApi(product:any){
+    return this.http.post(`${this.server_Url}/add-cart`,product,this.appendTokenToHeader())
+
+  }
+
+  getCartApi(){
+    return this.http.get(`${this.server_Url}/cart/get-allproduct`,this.appendTokenToHeader())
+  }
+
+  getCartCount(){
+    this.getCartApi().subscribe((res:any)=>{
+     this.cartCount.next(res.length)
+    })
   }
 
 }
