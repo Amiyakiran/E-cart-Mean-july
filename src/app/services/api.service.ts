@@ -77,5 +77,22 @@ getWishListapi(){
      this.cartCount.next(res.length)
     })
   }
+  //cartincrement
+  cartIncrement(id:any){
+   return this.http.get(`${this.server_Url}/cart/increment/${id}`,this.appendTokenToHeader())
+  }
 
+  //cartdecrement
+  cartDecrement(id:any){
+    return this.http.get(`${this.server_Url}/cart/decrement/${id}`,this.appendTokenToHeader())
+   }
+   //cartitemremove
+   removeCartItemApi(id:any){
+    return this.http.delete(`${this.server_Url}/cart/remove/${id}`, this.appendTokenToHeader())
+   }
+
+   //emptycart
+   emptyCartApi(){
+    return this.http.delete(`${this.server_Url}/cart/empty`,this.appendTokenToHeader())
+   }
 }
