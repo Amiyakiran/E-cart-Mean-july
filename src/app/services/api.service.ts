@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  server_Url ='http://localhost:3000'
+  server_Url ='https://e-cart-wtax.onrender.com'
 
   /* variable for behaviour subject */
   wishlistCount = new BehaviorSubject(0)
